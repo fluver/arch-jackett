@@ -11,6 +11,9 @@ jobs:
   gcr-dockerhub-build-publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch Repo Name
+        id: repo-name
+        run: echo "::set-output name=value::$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"
       - name: Checkout
         uses: actions/checkout@v2
       - name: Login to Docker Hub
@@ -50,7 +53,7 @@ jobs:
           max_attempts: 3
           retry_wait_seconds: 120
           command: |
-            docker push ${{ github.repository }}:${{ github.event.inputs.tags }}
+            docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ steps.repo-name.outputs.value }}:${{ github.event.inputs.tags }}
       - name: Push Docker image to GitHub Container Registry (GHCR)
         uses: nick-invision/retry@v2.4.0
         with:
