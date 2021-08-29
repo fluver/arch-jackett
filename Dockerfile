@@ -1,4 +1,4 @@
-FROM binhex/arch-int-vpn:latest
+FROM binhex/arch-privoxyvpn:latest
 LABEL org.opencontainers.image.authors="fluver"
 
 # additional files
