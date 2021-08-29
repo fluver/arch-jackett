@@ -1,5 +1,5 @@
-FROM binhex/arch-base:latest
-LABEL org.opencontainers.image.authors="binhex"
+FROM binhex/arch-int-vpn:latest
+LABEL org.opencontainers.image.authors="fluver"
 
 # additional files
 ##################
