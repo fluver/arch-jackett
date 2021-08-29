@@ -61,8 +61,8 @@ jobs:
           retry_wait_seconds: 120
           command: |
             docker build \
-              --tag ${{ github.repository }}:latest \
-              --tag ${{ github.repository }}:${{ steps.identify_tag.outputs.tag }} \
+              --tag ${{ secrets.DOCKERHUB_USERNAME }}/${{ steps.repo-name.outputs.value }}:latest \
+              --tag ${{ secrets.DOCKERHUB_USERNAME }}/${{ steps.repo-name.outputs.value }}:${{ steps.identify_tag.outputs.tag }} \
               --tag ghcr.io/${{ github.repository }}:latest \
               --tag ghcr.io/${{ github.repository }}:${{ steps.identify_tag.outputs.tag }} \
               .
